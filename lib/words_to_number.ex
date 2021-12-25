@@ -1,7 +1,7 @@
 defmodule WordsToNumber do
   @moduledoc """
   It dynamically creates functions from zero()
-  to ninety_nine() to get numbers from words.
+  to ninety_nine() to get numbers from "words".
   """
 
   @digs [
