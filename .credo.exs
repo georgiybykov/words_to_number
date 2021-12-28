@@ -164,8 +164,8 @@
           {CredoContrib.Check.FunctionBlockSyntax},
           {CredoContrib.Check.DocWhitespace},
           {CredoContrib.Check.ModuleDirectivesOrder},
-          {CredoContrib.Check.PublicPrivateFunctionName},
-          {CredoContrib.Check.SingleFunctionPipe}
+          {CredoContrib.Check.PublicPrivateFunctionName}
+          # {CredoContrib.Check.SingleFunctionPipe}
         ],
         disabled: [
           #

@@ -1,11 +1,10 @@
 defmodule WordsToNumber do
   @moduledoc """
-  It dynamically creates functions from zero()
+  It dynamically creates functions from one()
   to ninety_nine() to get numbers from "words".
   """
 
   @digs [
-    {0, "zero"},
     {1, "one"},
     {2, "two"},
     {3, "three"},
@@ -44,8 +43,8 @@ defmodule WordsToNumber do
   @doc """
   ## Examples
 
-    iex> WordsToNumber.zero()
-    0
+    iex> WordsToNumber.one()
+    1
 
     iex> WordsToNumber.twenty_one()
     21
@@ -57,13 +56,14 @@ defmodule WordsToNumber do
     77
   """
 
-  for {dec, dec_literal} <- @decs do
-    for {dig, dig_literal} <- @digs do
-      {dec + dig, "#{dec_literal}_#{dig_literal}"}
-    end
-  end
-  |> List.insert_at(0, [@digs, @digs_btw_ten_and_twenty, @decs])
-  |> List.flatten()
+  (@digs ++
+     @digs_btw_ten_and_twenty ++
+     @decs ++
+     for(
+       {dec, dec_literal} <- @decs,
+       {dig, dig_literal} <- @digs,
+       do: {dec + dig, "#{dec_literal}_#{dig_literal}"}
+     ))
   |> Enum.each(fn {value, literal} ->
     def unquote(:"#{literal}")(), do: unquote(value)
   end)
